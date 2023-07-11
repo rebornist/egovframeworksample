@@ -2,66 +2,52 @@ package egovframework.api.keyword.web;
 
 import egovframework.api.keyword.service.KeywordService;
 import egovframework.api.keyword.service.KeywordVO;
-import egovframework.api.web.CmmResponseHandler;
+import egovframework.api.keyword.service.impl.KeywordDTO;
+import egovframework.api.web.CmmResponse;
 import egovframework.api.web.ResponseDTO;
+import egovframework.com.ex.CustomApiException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/keyword")
-public class KeyworkController extends CmmResponseHandler {
+public class KeyworkController extends CmmResponse {
 
     @Resource(name = "keywordService")
     private KeywordService keywordService;
 
     @PostMapping("/search.do")
-    public void searchKeyword(@Valid @ModelAttribute KeywordVO vo, HttpServletResponse response, BindingResult bindingResult) {
+    public void searchKeyword(@Valid @ModelAttribute KeywordVO vo, HttpServletResponse response) throws Exception {
 
-        // 유효성 검사
-        if (bindingResult.hasErrors()) {
-            Map<String, String> errorMap = new HashMap<>();
+        List<KeywordDTO> keywords = keywordService.getKeywords(vo);
 
-            for (FieldError error : bindingResult.getFieldErrors()) {
-                System.out.println(error.getField() + ": " + error.getDefaultMessage());
-                errorMap.put(error.getField(), error.getDefaultMessage());
-            }
+        success(response, keywords);
+    }
 
-            fail(response, errorMap.toString(), HttpStatus.BAD_REQUEST);
-        }
+    @PostMapping("/add.do")
+    public void insertKeywory(@Valid @ModelAttribute KeywordVO vo, HttpServletResponse response) throws Exception {
 
-        try {
-            System.out.println(vo.toString());
-        } catch (Exception e) {
-            fail(response, e.getMessage(), HttpStatus.BAD_REQUEST);
-        }
 
-        success(response, new ResponseDTO<>(HttpStatus.OK.value(), "success", vo), HttpStatus.OK);
+
+        success(response, vo);
     }
 
     @PutMapping("/update.do")
-    public void updateKeyword(@Valid @ModelAttribute KeywordVO vo, HttpServletResponse response, BindingResult bindingResult) {
-
-        if (bindingResult.hasErrors()) {
-            System.out.println(bindingResult.getFieldError().getDefaultMessage());
-            fail(response, bindingResult.getFieldError().getDefaultMessage(), HttpStatus.BAD_REQUEST);
-            return;
-        }
+    public void updateKeyword(@Valid @ModelAttribute KeywordVO vo, HttpServletResponse response) throws Exception {
 
         try {
             System.out.println(vo.toString());
         } catch (Exception e) {
-            fail(response, e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+            throw new CustomApiException(e.getMessage());
         }
 
-        success(response, new ResponseDTO<>(HttpStatus.OK.value(), "success", vo), HttpStatus.OK);
+        success(response, vo);
     }
 }

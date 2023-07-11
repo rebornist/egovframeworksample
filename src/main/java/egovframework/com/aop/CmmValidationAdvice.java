@@ -1,6 +1,6 @@
 package egovframework.com.aop;
 
-import egovframework.api.web.CmmResponseHandler;
+import egovframework.com.ex.CustomValidationException;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -14,7 +14,7 @@ import java.util.Map;
  *
  * 유효성 검사 AOP
  */
-public class CmmValidationAdvice extends CmmResponseHandler {
+public class CmmValidationAdvice {
 
     public Object validationAdvice(ProceedingJoinPoint pjp) throws Throwable {
         Object[] args = pjp.getArgs();
@@ -29,12 +29,10 @@ public class CmmValidationAdvice extends CmmResponseHandler {
                         errorMap.put(error.getField(), error.getDefaultMessage());
                     }
 
-//                    throw new CustomValidationException("유효성 검사 실패", errorMap);
-                    return ResponseEntity.badRequest().body(errorMap.toString());
+                    throw new CustomValidationException("유효성 검사 실패", errorMap);
                 }
             }
         }
         return pjp.proceed();
     }
-
 }

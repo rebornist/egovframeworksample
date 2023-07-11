@@ -48,13 +48,27 @@
 
             <form name="frm" id="frm" action="<c:url value="/api/keyword/search.do" />" class="m-1 p-1 bg-light-subtle" method="post">
                 <div class="mt-3">
-                    <label for="keyword" class="form-label">텍스트 입력</label>
-                    <textarea class="form-control" id="keyword" name="keyword" rows="3"></textarea>
+                    <label for="hanWord" class="form-label">텍스트 입력</label>
+                    <textarea class="form-control" id="hanWord" name="hanWord" rows="3"></textarea>
                 </div>
                 <div class="d-grid gap-2 my-3">
                     <input type="submit" class="btn btn-primary" value="<spring:message code="button.search" />" />
                 </div>
             </form>
+
+            <table class="table table-sm mt-3">
+                <thead class="text-sm-center">
+                    <tr>
+                        <th scope="col text-center">#</th>
+                        <th scope="col">검색어</th>
+                        <th scope="col">영어</th>
+                        <th scope="col">영어_축약</th>
+                        <th scope="col">설명</th>
+                        <th scope="col">등록</th>
+                    </tr>
+                </thead>
+                <tbody class="text-sm-center" id="result"></tbody>
+            </table>
 
             <%@ include file="cmm/footer.jsp" %>
         </main>

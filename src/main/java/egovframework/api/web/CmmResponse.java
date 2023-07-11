@@ -5,42 +5,44 @@ import egovframework.com.ex.CustomApiException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletResponse;
 
-public class CmmResponseHandler {
+@Component
+public class CmmResponse {
+    private final Logger logger = LoggerFactory.getLogger(CmmResponse.class);
 
-    public static final Logger logger = LoggerFactory.getLogger(CmmResponseHandler.class);
-
-    public static void success(HttpServletResponse response, Object dto, HttpStatus httpStatus) {
+    public void success(HttpServletResponse res, Object dto) {
         try {
             ObjectMapper mapper = new ObjectMapper();
 
-            ResponseDTO<?> responseDto = new ResponseDTO<>(httpStatus.value(), "success", dto);
+            ResponseDTO<?> responseDto = new ResponseDTO<>(HttpStatus.OK.value(), "success", dto);
 
             String responseBody = mapper.writeValueAsString(responseDto);
-
-            response.setContentType("application/json;charset=utf-8");
-            response.setStatus(httpStatus.value());
-            response.getWriter().println(responseBody);
             logger.info("responseBody: {}", responseBody);
+
+            res.setContentType("application/json;charset=utf-8");
+            res.setStatus(HttpStatus.OK.value());
+            res.getWriter().write(responseBody);
+
         } catch (Exception e) {
             throw new CustomApiException(e.getMessage());
         }
     }
 
-    public static void fail(HttpServletResponse response, String message, HttpStatus httpStatus) {
+    public void fail(HttpServletResponse res, String message, HttpStatus httpStatus) {
         try {
             ObjectMapper mapper = new ObjectMapper();
 
             ResponseDTO<?> responseDto = new ResponseDTO<>(httpStatus.value(), message, null);
 
             String responseBody = mapper.writeValueAsString(responseDto);
-
-            response.setContentType("application/json;charset=utf-8");
-            response.setStatus(httpStatus.value());
-            response.getWriter().println(responseBody);
             logger.error("msg: {}, responseBody: {}", message, responseBody);
+
+            res.setContentType("application/json;charset=utf-8");
+            res.setStatus(httpStatus.value());
+            res.getWriter().write(responseBody);
         } catch (Exception e) {
             throw new CustomApiException(e.getMessage());
         }

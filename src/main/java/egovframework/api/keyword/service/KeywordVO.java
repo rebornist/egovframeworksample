@@ -1,31 +1,27 @@
 package egovframework.api.keyword.service;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.json.JSONObject;
 
 import javax.validation.constraints.Pattern;
 
+@Getter
+@Setter
+@ToString
 public class KeywordVO {
 
-    @Pattern(regexp = "^[a-zA-Z가-힣 ]+$", message = "특수문자가 포함되어 있습니다.")
-    private String keyword;
+    @Pattern(regexp = "^[a-zA-Z가-힣0-9\\. ]+$", message = "특수문자가 포함되어 있습니다.")
+    private String hanWord;
 
-    public String getKeyword() {
-        return keyword;
-    }
+    @Pattern(regexp = "^[a-zA-Z가-힣0-9\\. ]+$", message = "특수문자가 포함되어 있습니다.")
+    private String engWord;
 
-    public void setKeyword(String keyword) {
-        this.keyword = keyword;
-    }
+    @Pattern(regexp = "^[a-zA-Z가-힣0-9\\. ]+$", message = "특수문자가 포함되어 있습니다.")
+    private String engAbbrWord;
 
-    @Override
-    public String toString() {
-        return ToStringBuilder.reflectionToString(this);
-    }
+    @Pattern(regexp = "^[a-zA-Z가-힣0-9\\. ]+$", message = "특수문자가 포함되어 있습니다.")
+    private String description;
 
-    public String toJsonString() {
-        JSONObject obj = new JSONObject();
-        obj.put("keyword", keyword);
-        return obj.toString();
-    }
 }
