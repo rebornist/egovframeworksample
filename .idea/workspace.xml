@@ -10,27 +10,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f067de70-84cc-4f2b-b561-a36f95502f48" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/egovframework/api/web/CmmResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/egovframework/com/ex/CustomValidationException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/egov/mybatis/let/keyword-mapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/egov/mybatis/mybatis-config.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/egovframework/api/keyword/mapper/KeywordMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/egovframework/api/keyword/service/KeywordDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/egovframework/api/keyword/service/impl/Keyword.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/egovframework/api/keyword/util/KeywordCrawlUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/egovframework/com/web/response/CmmResponseHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/egovframework/com/web/response/ResponseTypeBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/egovframework/com/web/response/vo/CommonBodyVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/egovframework/com/web/response/vo/CommonHeaderVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/egovframework/com/web/response/vo/CommonResponseVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/egov/comm/context-mapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/keyword/indexJS.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/egovframework/api/keyword/service/KeywordService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/egovframework/api/keyword/service/KeywordService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/egovframework/api/keyword/service/KeywordVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/egovframework/api/keyword/service/KeywordVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/egovframework/api/keyword/service/impl/KeywordDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/egovframework/api/keyword/service/impl/KeywordDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/egovframework/api/keyword/service/KeywordVO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/egovframework/api/keyword/service/impl/KeywordDTO.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/egovframework/api/keyword/service/impl/KeywordServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/egovframework/api/keyword/service/impl/KeywordServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/egovframework/api/keyword/web/KeyworkController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/egovframework/api/keyword/web/KeyworkController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/egovframework/api/web/CmmResponseHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/egovframework/api/web/ResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/egovframework/api/web/ResponseDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/egovframework/com/aop/CmmValidationAdvice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/egovframework/com/aop/CmmValidationAdvice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/egovframework/api/web/CmmResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/egovframework/api/web/ResponseDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/egovframework/com/aop/CmmValidationAdvice.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/egovframework/com/ex/CustomApiException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/egovframework/com/ex/CustomApiException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/egovframework/com/ex/CustomExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/egovframework/com/ex/CustomExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/egovframework/index/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/egovframework/index/IndexController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/egov/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/egov/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/egov/comm/context-datasource.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/egov/comm/context-datasource.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/egov/sqlmap/let/EgovCmmUse_SQL_Cubrid.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/egov/sqlmap/let/EgovFile_SQL_Cubrid.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/egov/sqlmap/sql-map-config-cubrid.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/main.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/mainJS.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/mainJS.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/egov/comm/context-transaction.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/egov/comm/context-transaction.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/egov/mybatis/let/keyword-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/egov/mybatis/keyword/keyword-mapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/egov/mybatis/mybatis-config.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/egov/validator/validator-rules-let.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/keyword/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/mainJS.jsp" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,9 +53,9 @@
       <list>
         <option value="JavaScript File" />
         <option value="Jsp File" />
+        <option value="spring-beans.schema" />
         <option value="Interface" />
         <option value="Class" />
-        <option value="spring-beans.schema" />
       </list>
     </option>
   </component>
@@ -64,7 +75,7 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="userSettingsFile" value="C:\eGov\.mvn\settings.xml" />
+        <option name="userSettingsFile" value="C:\eGov\.m2\settings.xml" />
       </MavenGeneralSettings>
     </option>
   </component>
@@ -82,7 +93,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/eGov/workspace/dataDictionary/src/main/webapp/img&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/eGov/workspace/dataDictionary/src/main/java/egovframework/api/stdcd&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -91,29 +102,34 @@
     &quot;project.structure.last.edited&quot;: &quot;모듈&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.42068964&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;spring&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;ed3af6ba48c568e4c33bcc9346eb5afb&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="egovframework.com.web" />
       <recent name="egovframework.ex" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\eGov\workspace\dataDictionary\src\main\webapp\img" />
+      <recent name="C:\eGov\workspace\dataDictionary\src\main\java\egovframework\api\stdcd" />
+      <recent name="C:\eGov\workspace\dataDictionary\src\main\webapp\WEB-INF\jsp\stdcd" />
       <recent name="C:\eGov\workspace\dataDictionary\src\main\resources\egov\comm" />
+      <recent name="C:\eGov\workspace\dataDictionary\src\main\webapp\img" />
       <recent name="C:\eGov\workspace\dataDictionary\src\main\java\egovframework\com\cmm" />
-      <recent name="C:\eGov\workspace\dataDictionary\src\main\webapp\WEB-INF\jsp" />
-      <recent name="C:\eGov\workspace\dataDictionary\src\main\webapp\font" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\eGov\workspace\dataDictionary\src\main\webapp\WEB-INF\jsp\keyword" />
       <recent name="C:\eGov\workspace\dataDictionary\src\main\webapp" />
       <recent name="C:\eGov\workspace\dataDictionary\src\main\webapp\WEB-INF\config" />
       <recent name="C:\eGov\workspace\dataDictionary\src\main\resources\egov\sqlmap" />
       <recent name="C:\eGov\workspace\dataDictionary\src\main\resources\egov" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="egovframework.api.keyword.web" />
+      <recent name="egovframework.com.web" />
+      <recent name="egovframework.api.keyword.service" />
       <recent name="egovframework.com.cmm" />
       <recent name="egovframework.cmm" />
     </key>
@@ -297,12 +313,36 @@
       <workItem from="1688946381650" duration="2000" />
       <workItem from="1688977492372" duration="9244000" />
       <workItem from="1689037786471" duration="12962000" />
-      <workItem from="1689054183097" duration="11380000" />
+      <workItem from="1689054183097" duration="11461000" />
+      <workItem from="1689119709563" duration="6197000" />
+      <workItem from="1689126312633" duration="1401000" />
+      <workItem from="1689127794873" duration="7026000" />
+      <workItem from="1689141429637" duration="1000" />
+      <workItem from="1689144738843" duration="1918000" />
+      <workItem from="1689150508055" duration="73000" />
+      <workItem from="1689210448732" duration="600000" />
+      <workItem from="1689213160307" duration="9000" />
+      <workItem from="1689213493972" duration="8000" />
+      <workItem from="1689213844039" duration="2485000" />
+      <workItem from="1689221565526" duration="656000" />
+      <workItem from="1689825886605" duration="18741000" />
+      <workItem from="1689895546203" duration="3580000" />
+      <workItem from="1689899159113" duration="13829000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NoClassDefFoundError" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="egovframework.api.keyword.mapper.KeywordMapper">
+
+
+    <resultMap id="keywordResultMap" type="egovframework.api.keyword.service.impl.Keyword">
+        <id property="id" column="id"/>
+        <result property="keyword" column="KEYWORD"/>
+        <result property="engWord" column="ENG_WORD"/>
+        <result property="engAbbrWord" column="ENG_ABBR_WORD"/>
+        <result property="description" column="DESCRIPTION"/>
+    </resultMap>
+
+    <select id="searchAll" resultMap="keywordResultMap">
+        SELECT
+            ID,
+            KEYWORD,
+            ENG_WORD,
+            ENG_ABBR_WORD,
+            DESCRIPTION,
+            CREATED_AT,
+            UPDATED_AT
+        FROM
+            TB_KEYWORD
+        ORDER BY
+            KEYWORD ASC
+    </select>
+
+    <select id="searchByKeyword" resultMap="keywordResultMap" parameterType="egovframework.api.keyword.service.impl.Keyword">
+        SELECT
+            ID,
+            KEYWORD,
+            ENG_WORD,
+            ENG_ABBR_WORD,
+            DESCRIPTION,
+            CREATED_AT,
+            UPDATED_AT
+        FROM
+            TB_KEYWORD
+        WHERE
+            KEYWORD=#{keyword}
+            AND ENG_WORD=#{engWord}
+        ORDER BY
+            KEYWORD ASC
+    </select>
+
+    <insert id="insertKeyword" parameterType="egovframework.api.keyword.service.impl.Keyword">
+        INSERT INTO TB_KEYWORD
+        (
+            KEYWORD,
+            ENG_WORD,
+            ENG_ABBR_WORD,
+            DESCRIPTION,
+            CREATED_AT,
+            UPDATED_AT
+        )
+        VALUES
+        (
+            #{keyword},
+            #{engWord},
+            #{engAbbrWord},
+            #{description},
+            #{createdAt},
+            #{updatedAt}
+        )
+    </insert>
+
+    <update id="updateKeyword" parameterType="egovframework.api.keyword.service.impl.Keyword">
+        UPDATE
+            TB_KEYWORD
+        SET
+            KEYWORD=#{keyword},
+            ENG_WORD=#{engWord},
+            ENG_ABBR_WORD=#{engAbbrWord},
+            DESCRIPTION=#{description},
+            UPDATED_AT=#{updatedAt}
+        WHERE
+            ID=#{id}
+    </update>
+
+</mapper>

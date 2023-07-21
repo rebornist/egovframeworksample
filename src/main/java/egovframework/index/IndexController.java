@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class IndexController {
     @GetMapping("/main.do")
     public String index() {
-        return "main";
+        return "keyword/index";
     }
 
 }

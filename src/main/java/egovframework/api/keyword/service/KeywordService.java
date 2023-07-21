@@ -1,11 +1,21 @@
 package egovframework.api.keyword.service;
 
-import egovframework.api.keyword.service.impl.KeywordDTO;
+
+import egovframework.api.keyword.service.impl.Keyword;
 
 import java.util.List;
 
-public interface KeywordService {
-    List<KeywordDTO> getKeywords(KeywordVO vo) throws Exception;
 
-    void insertKeyword(KeywordDTO dto) throws Exception;
+public interface KeywordService {
+
+	List<Keyword> getKeywords(KeywordDto dto) throws Exception;
+
+    List<Keyword> searchByKeyword(KeywordDto dto) throws Exception;
+
+    List<Keyword> searchAll() throws Exception;
+
+    void insertKeyword(KeywordDto dto) throws Exception;
+
+    void updateKeyword(KeywordDto dto) throws Exception;
+
 }

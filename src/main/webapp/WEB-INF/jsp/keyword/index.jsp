@@ -42,14 +42,14 @@
     <body>
         <noscript class="noScriptTitle">자바스크립트를 지원하지 않는 브라우저에서는 일부 기능을 사용하실 수 없습니다.</noscript>
 
-        <%@include file="cmm/header.jsp" %>
+        <%@include file="../cmm/header.jsp" %>
 
         <main class="container">
 
             <form name="frm" id="frm" action="<c:url value="/api/keyword/search.do" />" class="m-1 p-1 bg-light-subtle" method="post">
                 <div class="mt-3">
-                    <label for="hanWord" class="form-label">텍스트 입력</label>
-                    <textarea class="form-control" id="hanWord" name="hanWord" rows="3"></textarea>
+                    <label for="keyword" class="form-label">텍스트 입력</label>
+                    <textarea class="form-control" id="keyword" name="keyword" rows="3"></textarea>
                 </div>
                 <div class="d-grid gap-2 my-3">
                     <input type="submit" class="btn btn-primary" value="<spring:message code="button.search" />" />
@@ -70,9 +70,9 @@
                 <tbody class="text-sm-center" id="result"></tbody>
             </table>
 
-            <%@ include file="cmm/footer.jsp" %>
+            <%@ include file="../cmm/footer.jsp" %>
         </main>
 
-        <%@include file="mainJS.jsp" %>
+        <%@include file="indexJS.jsp" %>
     </body>
 </html>

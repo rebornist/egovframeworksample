@@ -1,16 +1,18 @@
 package egovframework.api.keyword.web;
 
+import egovframework.api.keyword.service.KeywordDto;
 import egovframework.api.keyword.service.KeywordService;
-import egovframework.api.keyword.service.KeywordVO;
-import egovframework.api.keyword.service.impl.KeywordDTO;
-import egovframework.api.web.CmmResponse;
-import egovframework.api.web.ResponseDTO;
-import egovframework.com.ex.CustomApiException;
+import egovframework.com.web.response.CommonResponse;
+
+import egovframework.com.web.response.vo.CommonBodyVo;
+import egovframework.com.web.response.vo.CommonHeaderVo;
+import egovframework.com.web.response.CommonResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.ArrayList;
@@ -18,36 +20,80 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/keyword")
-public class KeyworkController extends CmmResponse {
+public class KeyworkController extends CommonResponse {
 
-    @Resource(name = "keywordService")
+    @Autowired
     private KeywordService keywordService;
 
+    @GetMapping(value = "/searchAll.do",
+                produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public void searchAll(HttpServletRequest request, HttpServletResponse response,
+                                 @RequestParam(required = false) String format) throws Exception {
+
+        List<KeywordDto> keywordEntities = new ArrayList<>();
+        keywordService.searchAll().forEach(keyword -> keywordEntities.add(keyword.toDto()));
+
+        if (keywordEntities == null) fail(response, "Not Found", HttpStatus.NOT_FOUND);
+
+        successByResponseType(request, response, format, new CommonResponseDto()
+                                                                .builder()
+                                                                .header(new CommonHeaderVo(
+                                                                            HttpStatus.OK.value(),
+                                                                            "Success"
+                                                                ))
+                                                                .body(new CommonBodyVo()
+                                                                            .builder()
+                                                                            .keywords(keywordEntities)
+                                                                            .build()
+                                                                )
+                                                                .build());
+    }
+
     @PostMapping("/search.do")
-    public void searchKeyword(@Valid @ModelAttribute KeywordVO vo, HttpServletResponse response) throws Exception {
+    public void searchKeyword(HttpServletResponse response,
+                                @Valid @ModelAttribute KeywordDto dto) throws Exception {
+        List<KeywordDto> keywordEntities = new ArrayList<>();
+        keywordService.getKeywords(dto).forEach(keyword -> keywordEntities.add(keyword.toDto()));
 
-        List<KeywordDTO> keywords = keywordService.getKeywords(vo);
-
-        success(response, keywords);
+        success(response, new CommonResponseDto()
+                                .builder()
+                                .header(new CommonHeaderVo(
+                                            HttpStatus.OK.value(),
+                                            "Success"))
+                                .body(new CommonBodyVo()
+                                            .builder()
+                                            .keywords(keywordEntities)
+                                            .build())
+                                .build());
     }
 
     @PostMapping("/add.do")
-    public void insertKeywory(@Valid @ModelAttribute KeywordVO vo, HttpServletResponse response) throws Exception {
-
-
-
-        success(response, vo);
+    public void addKeyword(@Valid @ModelAttribute KeywordDto dto, HttpServletResponse response) throws Exception {
+        keywordService.insertKeyword(dto);
+        success(response, new CommonResponseDto()
+                                .builder()
+                                .header(new CommonHeaderVo(
+                                            HttpStatus.OK.value(),
+                                            "Success"))
+                                .body(new CommonBodyVo()
+                                            .builder()
+                                            .keyword(dto)
+                                            .build())
+                                .build());
     }
 
     @PutMapping("/update.do")
-    public void updateKeyword(@Valid @ModelAttribute KeywordVO vo, HttpServletResponse response) throws Exception {
-
-        try {
-            System.out.println(vo.toString());
-        } catch (Exception e) {
-            throw new CustomApiException(e.getMessage());
-        }
-
-        success(response, vo);
+    public void updateKeyword(@Valid @ModelAttribute KeywordDto dto, HttpServletResponse response) throws Exception {
+        keywordService.updateKeyword(dto);
+        success(response, new CommonResponseDto()
+                                .builder()
+                                .header(new CommonHeaderVo(
+                                        HttpStatus.OK.value(),
+                                        "Success"))
+                                .body(new CommonBodyVo()
+                                        .builder()
+                                        .keyword(dto)
+                                        .build())
+                                .build());
     }
 }
